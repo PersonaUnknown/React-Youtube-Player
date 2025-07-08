@@ -1,10 +1,9 @@
+import YoutubePlayerController from './components/video-player/YoutubePlayerController'
 import './App.css'
 
 function App() {
   return (
-    <div>
-      Hello World
-    </div>
+    <YoutubePlayerController />
   )
 }
 
