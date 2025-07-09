@@ -10,19 +10,28 @@ import {
 } from "media-chrome/dist/react/media-store.js";
 import { motion } from "motion/react";
 import { type MouseEventHandler, useRef, useState } from "react";
+import { useVideoUI } from "../../contexts/VideoUIContext";
 import type { Timestamp } from "../../types/types";
 const VideoProgressBar = ({ timestamps }: VideoProgressBarProps) => {
-	const dispatch = useMediaDispatch();
+	// Setup
+    const dispatch = useMediaDispatch();
 	const currentTime = useMediaSelector((state) => state.mediaCurrentTime);
 	const duration = useMediaSelector((state) => state.mediaDuration);
 	const [isMouseDown, setIsMouseDown] = useState<boolean>(false);
-	const containerRef = useRef<HTMLDivElement>(null);
-	const onMouseUp: MouseEventHandler<HTMLDivElement> = (_) => {
+	const containerRef = useRef<HTMLButtonElement>(null);
+    const { setCurrSelectedElement } = useVideoUI();
+
+    // Methods
+	const onMouseUp: MouseEventHandler<HTMLButtonElement> = (_) => {
 		setIsMouseDown(false);
 	};
-	const onMouseLeave: MouseEventHandler<HTMLDivElement> = (_) => {
+	const onMouseLeave: MouseEventHandler<HTMLButtonElement> = (_) => {
 		setIsMouseDown(false);
+        setCurrSelectedElement("VIDEO_PLAYER_CONTAINER");
 	};
+    const onMouseEnter = () => {
+        setCurrSelectedElement("VIDEO_PROGRESS_BAR");
+    }
 	const getSectionClasses = (index: number, length: number): string => {
 		if (index === 0) {
 			return "rounded-l-full";
@@ -54,12 +63,15 @@ const VideoProgressBar = ({ timestamps }: VideoProgressBarProps) => {
 		const adjustedCompletion = (adjustedCurrTime / adjustedEnd) * 100;
 		return `${adjustedCompletion}%`;
 	};
+
+    // Render
 	return (
-		<div
+		<button
 			className="cursor-pointer flex-1 rounded-full h-2 relative"
 			ref={containerRef}
 			onMouseUp={onMouseUp}
 			onMouseLeave={onMouseLeave}
+            onMouseEnter={onMouseEnter}
 		>
 			{timestamps.length === 0 && (
 				<motion.div
@@ -160,7 +172,7 @@ const VideoProgressBar = ({ timestamps }: VideoProgressBarProps) => {
 					</>
 				);
 			})}
-		</div>
+		</button>
 	);
 };
 

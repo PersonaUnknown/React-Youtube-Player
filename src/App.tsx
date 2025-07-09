@@ -1,9 +1,40 @@
-import YoutubePlayerController from './components/video-player/YoutubePlayerController'
-import './App.css'
-
+import {
+	Route,
+	BrowserRouter as Router,
+	Routes
+} from "react-router-dom";
+import IFrameYoutubePlayer from "./components/iframe-embed/IFrameYoutubePlayer";
+import MediaChromeYoutubePlayer from "./components/media-chrome/MediaChromeYoutubePlayer";
+import ReactYoutubePlayer from "./components/react-youtube/ReactYoutubePlayer";
+import HomePage from "./pages/HomePage";
 function App() {
+  // Methods
+  const navigateHome = () => {
+    location.pathname = "/";
+  }
+
+  // Render
   return (
-    <YoutubePlayerController />
+    <div className="flex min-h-screen w-full justify-center">
+      <button 
+        type="button"
+        className="cursor-pointer absolute top-6 left-6 bg-black hover:bg-gray-400 text-white px-4 py-2 rounded-xl"
+        onClick={navigateHome}
+      >
+        Back Home
+      </button>
+      <Router>
+        <Routes>
+          <Route 
+            path="/" 
+            element={<HomePage />} 
+          />
+          <Route path="/iframe" element={<IFrameYoutubePlayer videoId="m-x101n0gh4" />} />
+          <Route path="/media-chrome" element={<MediaChromeYoutubePlayer src={"https://youtu.be/m-x101n0gh4?si=n7klPSy4B0ggE2KK"} />} />
+          <Route path="/react-yt" element={<ReactYoutubePlayer videoId="m-x101n0gh4" />} />
+        </Routes>
+      </Router>
+    </div>
   )
 }
 
