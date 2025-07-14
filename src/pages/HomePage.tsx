@@ -21,6 +21,13 @@ const HomePage = () => {
             <button
                 type="button"
                 className={buttonClass}
+                onClick={navigateIframe}
+            >
+                IFrame Embed
+            </button>
+            <button
+                type="button"
+                className={buttonClass}
                 onClick={navigateReactYT}
             >
                 React Youtube Package
@@ -31,13 +38,6 @@ const HomePage = () => {
                 onClick={navigateMediaChrome}
             >
                 Media Chrome
-            </button>
-            <button
-                type="button"
-                className={buttonClass}
-                onClick={navigateIframe}
-            >
-                IFrame Embed
             </button>
         </div>
     );

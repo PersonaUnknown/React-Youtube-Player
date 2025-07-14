@@ -7,7 +7,7 @@ export const secondsToVideoFormat = (seconds: number): string => {
 	const hours = Math.floor(seconds / 3600);
 	const remainingSeconds = seconds - hours * 3600;
 	const minutes = Math.floor(remainingSeconds / 60);
-	const finalRemainingSeconds = Math.floor(
+	const finalRemainingSeconds = Math.ceil(
 		seconds - hours * 3600 - minutes * 60,
 	);
 	let output = "";

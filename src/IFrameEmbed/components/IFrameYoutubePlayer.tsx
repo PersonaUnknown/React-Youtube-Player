@@ -25,6 +25,10 @@ const IFrameYoutubePlayer = ({
                     rel: 0,
                     fs: 0,
                     disablekb: 1
+                },
+                events: {
+                    // "onReady":
+                    // "onStateChange":
                 }
             });
         }
