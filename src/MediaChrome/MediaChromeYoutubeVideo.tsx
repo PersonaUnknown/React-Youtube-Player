@@ -13,7 +13,7 @@ const MediaChromeYoutubeVideo = ({
             src={src}
             slot="media"
             crossorigin
-            className="w-xl aspect-[9/16] md:aspect-[16/9]"
+            className="w-full h-full"
             config={{
                 disablekb: 1,
                 fs: 0,

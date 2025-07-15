@@ -7,15 +7,11 @@ import {
 	useMediaDispatch,
 	useMediaSelector,
 } from "media-chrome/dist/react/media-store.js";
-import { useRef } from "react";
-import { useVideoUI } from "../../contexts/VideoUIContext";
-const VolumeButton = () => {
+const MuteButton = () => {
     // Setup
     const dispatch = useMediaDispatch();
 	const volumeLevel = useMediaSelector((state) => state.mediaVolumeLevel);
 	const isMuted = useMediaSelector((state) => state.mediaMuted);
-	const { setCurrSelectedElement, setSelectedElementOffset } = useVideoUI();
-    const containerRef = useRef<HTMLButtonElement>(null);
 
     // Methods
     const onMuteToggle = () => {
@@ -23,15 +19,6 @@ const VolumeButton = () => {
             ? MediaActionTypes.MEDIA_UNMUTE_REQUEST
             : MediaActionTypes.MEDIA_MUTE_REQUEST;
         dispatch({ type });
-    }
-    const onMouseEnter = () => {
-        const leftOffset = containerRef?.current?.offsetLeft ?? 0;
-        setSelectedElementOffset({ left: leftOffset, right: undefined});
-        setCurrSelectedElement("MUTE_BUTTON");
-    }
-    const onMouseLeave = () => {
-        setSelectedElementOffset({ left: undefined, right: undefined});
-        setCurrSelectedElement("VIDEO_PLAYER_CONTAINER");
     }
     const getVolumeIcon = () => {
 		if (isMuted) {
@@ -52,13 +39,10 @@ const VolumeButton = () => {
             type="button"
             className="cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hover:text-accent-foreground rounded-md text-white hover:bg-white/20 p-2"
             onClick={onMuteToggle}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-            ref={containerRef}
         >
             {getVolumeIcon()}
         </button>
 	);
 }
 
-export default VolumeButton;
+export default MuteButton;

@@ -4,27 +4,13 @@ import {
 	Routes
 } from "react-router-dom";
 import IFrameYoutubePlayerWrapper from "./IFrameEmbed/components/IFrameYoutubePlayerWrapper";
-import MediaChromeYoutubePlayer from "./components/media-chrome/MediaChromeYoutubePlayer";
+import MediaChromeYoutubePlayer from "./MediaChrome/MediaChromeYoutubePlayer";
 import ReactYoutubePlayerWrapper from "./ReactYoutube/components/ReactYoutubePlayerWrapper";
 import HomePage from "./pages/HomePage";
 function App() {
-  // Methods
-  const navigateHome = () => {
-    location.pathname = "/";
-  }
-
   // Render
   return (
-    <div 
-      // className="flex min-h-screen w-full justify-center"
-    >
-      {/* <button 
-        type="button"
-        className="cursor-pointer absolute top-6 left-6 bg-black hover:bg-gray-400 text-white px-4 py-2 rounded-xl"
-        onClick={navigateHome}
-      >
-        Back Home
-      </button> */}
+    <div>
       <Router>
         <Routes>
           <Route 
