@@ -1,5 +1,5 @@
 import { Volume1, Volume2, VolumeOff, VolumeX } from "lucide-react";
-import { useYoutubeVideo } from "../contexts/YoutubeVideoContext";
+import { useYoutubeVideo } from "../contexts/IFrameYoutubeVideoContext";
 const MuteButton = () => {
     // Setup
     const { volumeLevel, isMuted, mute, unMute } = useYoutubeVideo();

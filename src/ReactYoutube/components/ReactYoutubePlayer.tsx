@@ -7,7 +7,7 @@ const ReactYoutubePlayer = ({
     videoId
 }: ReactYoutubePlayerProps) => {
     // Setup
-   const { setPlayer, setIsPaused, setSize, hasPlayedVideo, setHasPlayedVideo } = useYoutubeVideo();
+    const { setPlayer, setIsPaused, setSize, hasPlayedVideo, setHasPlayedVideo } = useYoutubeVideo();
     const containerRef = useRef<HTMLDivElement>(null);
     const opts: YouTubeProps["opts"] = {
         playerVars: {

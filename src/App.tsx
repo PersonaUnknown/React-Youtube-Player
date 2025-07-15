@@ -3,9 +3,8 @@ import {
 	BrowserRouter as Router,
 	Routes
 } from "react-router-dom";
-import IFrameYoutubePlayer from "./IFrameEmbed/components/IFrameYoutubePlayer";
+import IFrameYoutubePlayerWrapper from "./IFrameEmbed/components/IFrameYoutubePlayerWrapper";
 import MediaChromeYoutubePlayer from "./components/media-chrome/MediaChromeYoutubePlayer";
-import ReactYoutubePlayer from "./ReactYoutube/components/ReactYoutubePlayer";
 import ReactYoutubePlayerWrapper from "./ReactYoutube/components/ReactYoutubePlayerWrapper";
 import HomePage from "./pages/HomePage";
 function App() {
@@ -32,7 +31,7 @@ function App() {
             path="/" 
             element={<HomePage />} 
           />
-          <Route path="/iframe" element={<IFrameYoutubePlayer videoId="m-x101n0gh4" />} />
+          <Route path="/iframe" element={<IFrameYoutubePlayerWrapper />} />
           <Route path="/media-chrome" element={<MediaChromeYoutubePlayer src={"https://youtu.be/m-x101n0gh4?si=n7klPSy4B0ggE2KK"} />} />
           <Route path="/react-yt" element={<ReactYoutubePlayerWrapper />} />
         </Routes>

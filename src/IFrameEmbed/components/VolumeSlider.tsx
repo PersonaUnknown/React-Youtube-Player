@@ -1,5 +1,5 @@
 import { type MouseEventHandler, useRef, useState } from "react";
-import { useYoutubeVideo } from "../contexts/YoutubeVideoContext";
+import { useYoutubeVideo } from "../contexts/IFrameYoutubeVideoContext";
 const VolumeSlider = () => {
     // Setup
     const [isMouseDown, setIsMouseDown] = useState<boolean>(false);
